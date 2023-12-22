@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "649994137481",
+    "project_id": "cafe-4cfe6",
+    "storage_bucket": "cafe-4cfe6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:649994137481:android:9f29f44abc3fbace367b58",
+        "android_client_info": {
+          "package_name": "com.example.loginform"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACpiW7PfPg3QtHU4SUBeOWy2VTNZcPCm8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

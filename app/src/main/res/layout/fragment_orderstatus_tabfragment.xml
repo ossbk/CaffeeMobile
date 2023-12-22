@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/c1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="16dp"
+                android:text="Estimated time"
+                android:textAllCaps="true"
+                android:textColor="#252525"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginLeft="48dp"
+                android:text="30 minutes"
+                android:textColor="#202020"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/login" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView3">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/s1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <View
+                        android:id="@+id/v1"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="30dp"
+                        android:background="@drawable/ic_check"
+                        app:layout_constraintBottom_toBottomOf="@+id/orderplaced"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/orderplaced" />
+
+                    <View
+                        android:id="@+id/d1"
+
+                        android:layout_width="3dp"
+                        android:layout_height="34dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="@drawable/shape_status_completed"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/v1" />
+
+                    <ImageView
+                        android:id="@+id/orderplaced"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="16dp"
+                        android:src="@drawable/ic_placed"
+                        app:layout_constraintStart_toEndOf="@+id/v1"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/supporter_placed"
+                        android:layout_width="1dp"
+                        android:layout_height="1dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/orderplaced"
+                        app:layout_constraintEnd_toEndOf="@+id/orderplaced"
+                        app:layout_constraintStart_toStartOf="@+id/orderplaced"
+                        app:layout_constraintTop_toTopOf="@+id/orderplaced" />
+
+                    <TextView
+                        android:id="@+id/textorderplaced"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="Order Placed"
+                        android:textColor="#000111"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/supporter_placed"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/orderplaced" />
+
+                    <TextView
+                        android:id="@+id/placed_desc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Your order is placed"
+                        app:layout_constraintEnd_toEndOf="@id/textorderplaced"
+                        app:layout_constraintStart_toStartOf="@+id/textorderplaced"
+                        app:layout_constraintTop_toBottomOf="@+id/textorderplaced" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/s2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/s1">
+
+                    <View
+                        android:id="@+id/v2"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:background="@drawable/ic_arrows"
+                        app:layout_constraintBottom_toBottomOf="@+id/img_confirmed"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/img_confirmed" />
+
+                    <View
+                        android:id="@+id/d2"
+                        android:layout_width="3dp"
+                        android:layout_height="34dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="4dp"
+                        android:alpha="0.5"
+                        android:background="@drawable/shape_status_current"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/v2" />
+
+                    <ImageView
+                        android:id="@+id/img_confirmed"
+
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:src="@drawable/ic_completed_task"
+                        app:layout_constraintStart_toEndOf="@+id/v2"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/supporter_confirmed"
+                        android:layout_width="1dp"
+                        android:layout_height="1dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/img_confirmed"
+                        app:layout_constraintEnd_toEndOf="@+id/img_confirmed"
+                        app:layout_constraintStart_toStartOf="@+id/img_confirmed"
+                        app:layout_constraintTop_toTopOf="@+id/img_confirmed" />
+
+                    <TextView
+                        android:id="@+id/tvconfirm"
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="Waiting for confirmaton"
+                        android:textColor="#000111"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/supporter_confirmed"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/img_confirmed" />
+
+                    <TextView
+                        android:id="@+id/desconfirm"
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Your Order will be confirmed soon"
+                        app:layout_constraintEnd_toEndOf="@id/tvconfirm"
+                        app:layout_constraintStart_toStartOf="@+id/tvconfirm"
+                        app:layout_constraintTop_toBottomOf="@+id/tvconfirm" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/s3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/s1">
+
+                    <View
+                        android:id="@+id/v3"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:alpha="0.5"
+                        android:background="@drawable/shape_status_current"
+                        app:layout_constraintBottom_toBottomOf="@+id/img_dispatched"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/img_dispatched" />
+
+                    <View
+                        android:id="@+id/d3"
+                        android:layout_width="3dp"
+
+                        android:layout_height="34dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="4dp"
+                        android:alpha="0.5"
+                        android:background="@drawable/shape_status_current"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/v3" />
+
+                    <ImageView
+                        android:id="@+id/img_dispatched"
+
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:alpha="0.7"
+                        android:src="@drawable/ic_bike"
+                        app:layout_constraintStart_toEndOf="@+id/v3"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/supporter_shipped"
+                        android:layout_width="1dp"
+                        android:layout_height="1dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/img_dispatched"
+                        app:layout_constraintEnd_toEndOf="@+id/img_dispatched"
+                        app:layout_constraintStart_toStartOf="@+id/img_dispatched"
+                        app:layout_constraintTop_toTopOf="@+id/img_dispatched" />
+
+                    <TextView
+                        android:id="@+id/tvdispatch"
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:alpha="0.5"
+                        android:text="Pickup"
+                        android:textColor="#000111"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/supporter_shipped"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/img_dispatched" />
+
+                    <TextView
+                        android:id="@+id/desdispatch"
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.5"
+                        android:text="Your order will be ready to pickup soon."
+                        app:layout_constraintEnd_toEndOf="@id/tvdispatch"
+                        app:layout_constraintStart_toStartOf="@+id/tvdispatch"
+                        app:layout_constraintTop_toBottomOf="@+id/tvdispatch" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/s4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <View
+                        android:id="@+id/v4"
+
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:alpha="0.5"
+                        android:background="@drawable/shape_status_current"
+                        app:layout_constraintBottom_toBottomOf="@+id/img_delivered"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/img_delivered" />
+
+                    <ImageView
+                        android:id="@+id/img_delivered"
+
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginBottom="8dp"
+                        android:alpha="0.5"
+                        android:src="@drawable/ic_parcel"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/v4"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/supporter_processed"
+                        android:layout_width="1dp"
+                        android:layout_height="1dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/img_delivered"
+                        app:layout_constraintEnd_toEndOf="@+id/img_delivered"
+                        app:layout_constraintStart_toStartOf="@+id/img_delivered"
+                        app:layout_constraintTop_toTopOf="@+id/img_delivered" />
+
+                    <TextView
+                        android:id="@+id/tvdelivered"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:alpha="0.5"
+                        android:text="Completed"
+                        android:textColor="#000111"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/supporter_processed"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/img_delivered" />
+
+                    <TextView
+                        android:id="@+id/desdelivered"
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.5"
+                        android:text="Your order will be completed soon.."
+                        app:layout_constraintEnd_toEndOf="@id/tvdelivered"
+                        app:layout_constraintStart_toStartOf="@+id/tvdelivered"
+                        app:layout_constraintTop_toBottomOf="@+id/tvdelivered" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

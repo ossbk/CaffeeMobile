@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="yellow">#BF6B312D</color>
+    <color name="brown">#BF6B312D</color>
+
+
+    <color name="placed">#2196F3</color>
+    <color name="confirmed">#3F51B5</color>
+
+    <color name="ready_to_pickup">#FF9800</color>
+    <color name="cancelled">#F44336</color>
+    <color name="delivered">#4CAF50</color>
+
+    <color name="light_brown">#Cf9E6D</color>
+    <color name="dark_brown">#543A20</color>
+    <color name="text_color">#CC9A6A</color>
+    <color name="card_order_color">#CE9760</color>
+    <color name="dark_brown_100">#764A1D</color>
+</resources>

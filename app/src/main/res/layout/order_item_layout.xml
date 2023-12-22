@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginTop="3dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivProduct"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="4dp"
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/roundedImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/app_name"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivProduct"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:text="@string/app_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivProduct"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="4dp"
+        android:text="10.0"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/ivProduct"
+        app:layout_constraintTop_toBottomOf="@id/tvDes" />
+
+
+    <TextView
+        android:id="@+id/tvPriceTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="10dp"
+        android:text="10.0"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/tvItems"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvItems" />
+
+    <TextView
+        android:id="@+id/tvItems"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="10dp"
+        android:text="QTY: "
+        android:textColor="@color/light_brown"
+        android:layout_marginStart="10dp"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/ivProduct"
+        app:layout_constraintTop_toBottomOf="@id/tvPrice" />
+  <TextView
+        android:id="@+id/tvNoOfItems"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="10dp"
+        android:text="0"
+         android:layout_marginStart="4dp"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/tvItems"
+        app:layout_constraintTop_toBottomOf="@id/tvPrice" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        app:layout_constraintTop_toBottomOf="@id/tvNoOfItems"
+        app:layout_constraintStart_toEndOf="@id/ivProduct"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="14dp"
+        android:scaleX="0.7"
+        android:scaleY="0.7"
+        android:transformPivotX="0dp"
+         android:layout_height="wrap_content"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="14dp"
+        android:alpha="0.5"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/ratingBar" />
+</androidx.constraintlayout.widget.ConstraintLayout>
