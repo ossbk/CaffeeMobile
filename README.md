@@ -1,9 +1,9 @@
 Welcome to the repository of our Coffee Shop Mobile App, crafted with Kotlin on Android Studio! ☕📱
 
-OVERVIEW
+OVERVIEW:
 Explore the source code of our Coffee Shop Mobile App, where the rich flavors of Kotlin blend seamlessly with the intuitive UI designed using XML. This repository is a testament to our commitment to delivering an engaging and efficient coffee shop experience.
 
-FEATURES
+FEATURES:
 Customer Role:
     User Authentication:
         Register and securely log in to access your personalized account.
@@ -18,10 +18,7 @@ Customer Role:
     Notifications:
         Stay informed with timely notifications on order status updates.
 
-Technologies Used
-
-Our app leverages the power of Kotlin for robust functionality and the Android Studio environment to create a visually appealing and user-friendly interface.
-Feel free to dive into the code, contribute to our project, or share your thoughts through issues. We value your collaboration in making our Coffee Shop Mobile App a delightful experience!
+Technologies Used: Coffee Shop Mobile App is developed using Kotlin, a modern and expressive language, in conjunction with XML for UI design. Following the MVVM (Model-View-ViewModel) architectural pattern, our app delivers an intuitive, efficient, and visually appealing experience for users and administrators alike.
 
 
 ![Screenshot_20231226_145128](https://github.com/ossbk/CoffeeMobileApp/assets/107875414/986bf435-1a7f-4873-8f37-a3a3d42acbef)
