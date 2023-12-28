@@ -6,7 +6,6 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.loginform.ModelView.MainActivity
 import com.example.loginform.data.Resource
 import com.example.loginform.databinding.ActivitySignInBinding
 import com.example.loginform.ui.dialogs.ProgressDialogUtil

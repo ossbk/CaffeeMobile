@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "649994137481",
-    "project_id": "cafe-4cfe6",
-    "storage_bucket": "cafe-4cfe6.appspot.com"
+    "project_number": "851906486764",
+    "firebase_url": "https://loginform-93f4b-default-rtdb.firebaseio.com",
+    "project_id": "loginform-93f4b",
+    "storage_bucket": "loginform-93f4b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:649994137481:android:9f29f44abc3fbace367b58",
+        "mobilesdk_app_id": "1:851906486764:android:15737bc34fc6f75595a0c9",
         "android_client_info": {
           "package_name": "com.example.loginform"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyACpiW7PfPg3QtHU4SUBeOWy2VTNZcPCm8"
+          "current_key": "AIzaSyC6RHfOCzX0Kmh23HXhWARqR9Ev9cP6O-g"
         }
       ],
       "services": {
