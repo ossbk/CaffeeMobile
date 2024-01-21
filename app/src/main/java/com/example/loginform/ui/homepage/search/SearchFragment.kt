@@ -9,23 +9,28 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.loginform.Model.stringToCustomer
+import com.example.loginform.data.PrefRepository
 import com.example.loginform.data.Resource
 import com.example.loginform.databinding.FragmentSearchBinding
 import com.example.loginform.ui.homepage.mainlayout.CoffeeCartAdapter
-import com.example.loginform.ui.productdetails.ProductDetails
+import com.example.loginform.ui.productdetails.AdminProductDetails
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class SearchFragment : Fragment() {
     lateinit var binding: FragmentSearchBinding
 
-    private val searchProductsViewModel: SearchProductsViewModel by viewModels()
+    private val searchProductsViewModel: SearchProductsViewModel by activityViewModels()
     private lateinit var coffeeCartAdapter: CoffeeCartAdapter
+    @Inject
+    lateinit var prefRepository: PrefRepository
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,7 +51,6 @@ class SearchFragment : Fragment() {
                     count: Int,
                     after: Int
                 ) {
-
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -61,7 +65,7 @@ class SearchFragment : Fragment() {
 
             rvProducts.apply {
                 layoutManager = LinearLayoutManager(context)
-                coffeeCartAdapter = CoffeeCartAdapter()
+                coffeeCartAdapter = CoffeeCartAdapter(context, prefRepository.currentUser.stringToCustomer()?.cusIsAdmin==true)
                 adapter = coffeeCartAdapter
             }
             lifecycleScope.launch {
@@ -81,7 +85,6 @@ class SearchFragment : Fragment() {
 
                         is Resource.Success -> {
                             pbLoading.visibility = View.GONE
-
                             coffeeCartAdapter.submitList(it.data)
                         }
 
@@ -90,12 +93,13 @@ class SearchFragment : Fragment() {
 
                         }
                     }
+
                 }
             }
 
             coffeeCartAdapter.procuctClicked = {
                 searchProductsViewModel.setSelectedProduct(it)
-                startActivity(Intent(context, ProductDetails::class.java))
+                startActivity(Intent(context, AdminProductDetails::class.java))
             }
         }
     }

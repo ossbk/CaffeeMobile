@@ -1,75 +1,105 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- item_layout.xml -->
-<!-- item_coffee_layout.xml -->
-
+<?xml version="1.0" encoding="utf-8"?><!-- item_layout.xml -->
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/clRoot"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/clRoot"
+    android:layout_margin="8dp"
     android:clickable="true"
     android:focusable="true"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="8dp"
     app:cardCornerRadius="8dp">
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/coffee_image"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/coffee_cup"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivEdit"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="7dp"
+                android:layout_marginVertical="4dp"
+                android:background="@color/yellow"
+                android:padding="10dp"
+                android:visibility="gone"
+                android:src="@drawable/baseline_edit_24"
+                app:layout_constraintEnd_toStartOf="@id/ivDelete"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/white" />
+
+            <ImageView
+                android:id="@+id/ivDelete"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="4dp"
+                android:background="@color/yellow"
+                android:padding="10dp"
+                android:visibility="gone"
+                android:src="@drawable/baseline_delete_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/white" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/nameTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_marginTop="8dp"
+            android:text="Coffee Name"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-                <!-- Coffee Image (using regular ImageView) -->
-                <ImageView
-                    android:id="@+id/coffee_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/coffee_cup"
-                   />
+        <!-- Coffee Description -->
+        <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="This is a delicious cup of coffee. Enjoy!"
+            android:textColor="@android:color/darker_gray" />
 
-                <!-- Coffee Title -->
-                <TextView
-                    android:id="@+id/nameTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="8dp"
-                    android:text="Coffee Name" />
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:isIndicator="true"
+            android:rating="3.5"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:transformPivotX="0dp"
+            android:transformPivotY="0dp"
+            android:visibility="gone" />
 
-                <!-- Coffee Description -->
-                <TextView
-                    android:id="@+id/descriptionTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@android:color/darker_gray"
-                    android:layout_marginTop="4dp"
-                    android:text="This is a delicious cup of coffee. Enjoy!" />
-
-                <RatingBar
-                    android:id="@+id/ratingBar"
-                    android:scaleX=".5"
-                    android:rating="3.5"
-                    android:layout_marginTop="16dp"
-                    android:scaleY=".5"
-                    android:clickable="false"
-                    android:focusable="false"
-                    android:visibility="gone"
-                    android:isIndicator="true"
-                    android:transformPivotX="0dp"
-                    android:transformPivotY="0dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                />
-                <TextView
-                    android:id="@+id/priceTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/black"
-                    android:layout_gravity="end"
-                    android:layout_marginTop="8dp"
-                    android:text="$2.99" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/priceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="8dp"
+            android:text="$2.99"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

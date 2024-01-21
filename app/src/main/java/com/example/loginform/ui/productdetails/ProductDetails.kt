@@ -29,7 +29,7 @@ class ProductDetails : AppCompatActivity() {
                 Glide.with(this@ProductDetails).load(mProduct.prodImage).into(imageView3)
                 textViewName.text = mProduct.prodName
                 textViewDescription.text = mProduct.prodDes
-                cPrice.text = "$"+mProduct.prodPrice.toString()
+                cPrice.text = "$" + mProduct.prodPrice.toString()
 
                 if (mProduct.prodNoOfPeopleRated > 0) {
                     val rating = mProduct.prodRating / mProduct.prodNoOfPeopleRated
@@ -43,6 +43,7 @@ class ProductDetails : AppCompatActivity() {
                     ratingBar.visibility = View.GONE
 
             }
+            ratingBar.setIsIndicator(true)
 
             addCoffee.setOnClickListener {
                 productDetailsViewModel.incQuantity()

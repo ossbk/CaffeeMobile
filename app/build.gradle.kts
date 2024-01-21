@@ -60,6 +60,8 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-messaging")
+    implementation("com.google.firebase:firebase-storage")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     // For control over item selection of both touch and mouse driven selection
     implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
@@ -84,6 +86,9 @@ dependencies {
     testImplementation("org.robolectric:robolectric:4.11.1")
     kaptTest("com.google.dagger:hilt-android-compiler:2.48.1")
     testImplementation("io.mockk:mockk:1.13.9")
+
+
+    implementation("com.github.developwithishfaq:easy-fcm:1.2")
 
 
 }

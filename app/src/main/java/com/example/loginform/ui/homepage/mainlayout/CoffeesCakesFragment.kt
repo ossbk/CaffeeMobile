@@ -13,16 +13,23 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.loginform.Model.ItemType
+import com.example.loginform.Model.ProductItem
+import com.example.loginform.Model.stringToCustomer
 import com.example.loginform.R
+import com.example.loginform.data.PrefRepository
 import com.example.loginform.data.Resource
 import com.example.loginform.databinding.FragmentCoffeeCakesBinding
+import com.example.loginform.ui.add_edit_product.AddEditProductActivity
 import com.example.loginform.ui.authentication.SignInActivity
 import com.example.loginform.ui.dialogs.ProgressDialogUtil
+import com.example.loginform.ui.productdetails.AdminProductDetails
 import com.example.loginform.ui.productdetails.ProductDetails
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class CoffeesCakesFragment : Fragment() {
@@ -31,6 +38,9 @@ class CoffeesCakesFragment : Fragment() {
 
     private val coffeeCartViewModel: CoffeeCartViewModel by activityViewModels()
     var job: Job? = null
+
+    @Inject
+    lateinit var prefRepository: PrefRepository
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -44,14 +54,20 @@ class CoffeesCakesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.itemRecyclerView.apply {
-            coffeeCartAdapter = CoffeeCartAdapter()
+            coffeeCartAdapter = CoffeeCartAdapter(context, prefRepository.currentUser.stringToCustomer()?.cusIsAdmin==true)
             layoutManager = LinearLayoutManager(context)
             adapter = coffeeCartAdapter
+        }
+        coffeeCartAdapter.deleteClicked = {
+            showDeleteDialog(it)
         }
 
         coffeeCartAdapter.procuctClicked = {
             coffeeCartViewModel.setSelectedProduct(it)
-            startActivity(Intent(context, ProductDetails::class.java))
+            if (prefRepository.currentUser.stringToCustomer()?.cusIsAdmin == true) {
+                startActivity(Intent(context, AdminProductDetails::class.java))
+            } else
+                startActivity(Intent(context, ProductDetails::class.java))
         }
 
         binding.ivLogout.setOnClickListener {
@@ -69,6 +85,12 @@ class CoffeesCakesFragment : Fragment() {
             showCakeButton.setOnClickListener {
                 coffeeCartViewModel.setSelectedType(ItemType.CAKE)
                 coffeeCartViewModel.getCakesProducts()
+            }
+
+            fabAdd.setOnClickListener {
+                Intent(context, AddEditProductActivity::class.java).apply {
+                    startActivity(this)
+                }
             }
         }
 
@@ -112,6 +134,47 @@ class CoffeesCakesFragment : Fragment() {
 
             }
         }
+
+
+    }
+
+    private fun showDeleteDialog(it: ProductItem) {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Delete Product")
+            .setMessage("Are you sure you want to delete this product?")
+            .setPositiveButton("Yes") { dialog, which ->
+                lifecycleScope.launch {
+                    ProgressDialogUtil.showProgressDialog(context)
+                    val result = coffeeCartViewModel.deleteProduct(it)
+                    ProgressDialogUtil.dismissProgressDialog()
+                    coffeeCartViewModel.reloadProducts()
+                    when (result) {
+                        is Resource.Failure -> {
+                             Toast.makeText(
+                                context,
+                                result.message,
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+
+                        is Resource.Success -> {
+                            Toast.makeText(
+                                context,
+                                "Product deleted successfully",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+
+                        else -> {
+
+                        }
+                    }
+                }
+            }
+            .setNegativeButton("No") { dialog, which ->
+                dialog.dismiss()
+            }
+            .show()
     }
 
     private fun selectItem(type: ItemType) {

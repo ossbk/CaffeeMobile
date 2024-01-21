@@ -56,6 +56,11 @@ class CoffeeCartViewModel @Inject constructor(
 
     }
 
+    fun reloadProducts() {
+        getCoffeeProducts()
+        getCakesProducts()
+    }
+
     fun setSelectedProduct(it: ProductItem) {
         productRepository.selectedProduct = it
     }
@@ -72,6 +77,11 @@ class CoffeeCartViewModel @Inject constructor(
         viewModelScope.launch {
             authRepository.logout()
         }
+    }
+
+    suspend fun deleteProduct(it: ProductItem): Resource<Boolean> {
+        return productRepository.deleteProduct(it)
+
     }
 
 

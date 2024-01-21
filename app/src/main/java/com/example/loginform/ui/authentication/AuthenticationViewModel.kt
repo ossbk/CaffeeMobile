@@ -3,6 +3,8 @@ package com.example.loginform.ui.authentication
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.loginform.Model.Customer
+import com.example.loginform.Model.stringToCustomer
+import com.example.loginform.data.PrefRepository
 import com.example.loginform.data.Resource
 import com.example.loginform.data.authentication.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,7 +15,10 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class AuthenticationViewModel @Inject constructor(private val authRepository: AuthRepository) :
+class AuthenticationViewModel @Inject constructor(
+    private val authRepository: AuthRepository,
+    private val prefRepository: PrefRepository
+) :
     ViewModel() {
 
     private val _loginFlow = MutableStateFlow<Resource<Customer>?>(null)
@@ -27,7 +32,7 @@ class AuthenticationViewModel @Inject constructor(private val authRepository: Au
 
     init {
         if (currentUser != null) {
-            _loginFlow.value = Resource.Success(Customer())
+            _loginFlow.value = Resource.Success(prefRepository.currentUser.stringToCustomer()!!)
         }
     }
 

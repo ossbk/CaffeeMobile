@@ -11,7 +11,7 @@ import com.example.loginform.Model.OrderItem
 import com.example.loginform.Model.mRoundOff
 import com.example.loginform.databinding.OrderItemLayoutBinding
 
-class OrderItemAdapter : ListAdapter<OrderItem, OrderItemAdapter.ItemViewHolder>(diffcallback) {
+class OrderItemAdapter (private val isAdmin:Boolean) : ListAdapter<OrderItem, OrderItemAdapter.ItemViewHolder>(diffcallback) {
 
     val ratingHashMap: HashMap<String, Float> = hashMapOf()
 
@@ -26,8 +26,8 @@ class OrderItemAdapter : ListAdapter<OrderItem, OrderItemAdapter.ItemViewHolder>
                 tvPriceTotal.text = "$${item.calculatePrice().mRoundOff()}"
                 Glide.with(binding.root).load(item.prodImgUrl).into(binding.ivProduct)
 
-                     ratingBar.rating=item.rating
-                if (item.rating!=0.0f){
+                ratingBar.rating = item.rating
+                if (item.rating != 0.0f ||isAdmin) {
                     ratingBar.setIsIndicator(true)
                 }
 
@@ -57,10 +57,10 @@ class OrderItemAdapter : ListAdapter<OrderItem, OrderItemAdapter.ItemViewHolder>
     }
 
 
-    fun isAllProductsRated():Boolean{
-        Log.d("cvrr","ratinghashmp=${ratingHashMap.keys.size},$ratingHashMap")
-        Log.d("cvrr","currentlist=${currentList.size},$currentList")
-        return ratingHashMap.keys.size==currentList.size
+    fun isAllProductsRated(): Boolean {
+        Log.d("cvrr", "ratinghashmp=${ratingHashMap.keys.size},$ratingHashMap")
+        Log.d("cvrr", "currentlist=${currentList.size},$currentList")
+        return ratingHashMap.keys.size == currentList.size
     }
 
 

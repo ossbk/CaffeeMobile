@@ -51,7 +51,8 @@ class SignUpActivity : AppCompatActivity() {
                         cusPhoneNo = phoneNo,
                         cusUserName = name,
                         cusPassword = pass,
-                        cusIsActive = true
+                        cusIsActive = true,
+                        cusIsAdmin = binding.checkBox.isChecked
                     )
                     authenticationViewModel.signUp(customer)
 
@@ -97,3 +98,4 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 }
+

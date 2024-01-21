@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.loginform.data.Resource
 import com.example.loginform.databinding.ActivitySignInBinding
 import com.example.loginform.ui.dialogs.ProgressDialogUtil
+import com.example.loginform.ui.homepage.AdminHomePageActivity
 import com.example.loginform.ui.homepage.HomePageActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -61,10 +62,17 @@ class SignInActivity : AppCompatActivity() {
 
                     is Resource.Success -> {
                         ProgressDialogUtil.dismissProgressDialog()
-                        val intent = Intent(this@SignInActivity, HomePageActivity::class.java)
-                        startActivity(intent)
-                        finish()
-
+                        if (it.data.cusIsAdmin) {
+                            val intent =
+                                Intent(this@SignInActivity, AdminHomePageActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            val intent =
+                                Intent(this@SignInActivity, HomePageActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
                     }
 
                     else -> {

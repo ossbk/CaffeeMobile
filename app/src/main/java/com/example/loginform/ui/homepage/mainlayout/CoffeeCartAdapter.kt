@@ -1,17 +1,23 @@
 package com.example.loginform.ui.homepage.mainlayout
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.example.loginform.Model.ProductItem
 import com.example.loginform.databinding.CoffeeLayoutBinding
+import com.example.loginform.ui.add_edit_product.AddEditProductActivity
 
-class CoffeeCartAdapter : ListAdapter<ProductItem, CoffeeCartAdapter.ItemViewHolder>(diffcallback) {
+class CoffeeCartAdapter(val mContext: Context, val isAdmin: Boolean = false) :
+    ListAdapter<ProductItem, CoffeeCartAdapter.ItemViewHolder>(diffcallback) {
     var procuctClicked: ((ProductItem) -> Unit)? = null
+    var deleteClicked: ((ProductItem) -> Unit)? = null
 
     inner class ItemViewHolder(private val binding: CoffeeLayoutBinding) :
         ViewHolder(binding.root) {
@@ -30,9 +36,11 @@ class CoffeeCartAdapter : ListAdapter<ProductItem, CoffeeCartAdapter.ItemViewHol
                         ratingBar.rating = rating.toFloat()
                         ratingBar.visibility = View.VISIBLE
                     }
-                }
-                else
-                    ratingBar.visibility=View.GONE
+                } else
+                    ratingBar.visibility = View.GONE
+
+                ivEdit.isVisible = isAdmin
+                ivDelete.isVisible = isAdmin
 
             }
         }
@@ -40,6 +48,17 @@ class CoffeeCartAdapter : ListAdapter<ProductItem, CoffeeCartAdapter.ItemViewHol
         init {
             binding.clRoot.setOnClickListener {
                 procuctClicked?.invoke(getItem(absoluteAdapterPosition))
+            }
+            binding.ivDelete.setOnClickListener {
+                deleteClicked?.invoke(getItem(absoluteAdapterPosition))
+            }
+            binding.ivEdit.setOnClickListener {
+                AddEditProductActivity.product = getItem(absoluteAdapterPosition)
+                Intent(mContext, AddEditProductActivity::class.java).apply {
+                    putExtra("id", getItem(absoluteAdapterPosition).prodId)
+                }.also {
+                    mContext.startActivity(it)
+                }
             }
         }
 

@@ -14,23 +14,30 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.loginform.Model.Order
 import com.example.loginform.Model.OrderStatus
 import com.example.loginform.Model.mRoundOff
+import com.example.loginform.Model.stringToCustomer
+import com.example.loginform.data.PrefRepository
 import com.example.loginform.data.Resource
 import com.example.loginform.databinding.FragmentDetailsTabFragmentBinding
 import com.example.loginform.ui.dialogs.ProgressDialogUtil
-import com.example.loginform.ui.homepage.orders.OrdersViewModel
+import com.example.loginform.ui.homepage.orders.AdminOrdersViewModel
 import com.example.loginform.ui.homepage.orders.orderdetails.OrderItemAdapter
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.play.integrity.internal.t
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class OrderDetailsTabFragment : Fragment() {
     private lateinit var binding: FragmentDetailsTabFragmentBinding
 
-    private lateinit var orderItemAdapter: OrderItemAdapter
-    private val ordersViewModel: OrdersViewModel by activityViewModels()
+    private lateinit var adminOrderItemAdapter: OrderItemAdapter
+    private val adminOrdersViewModel: AdminOrdersViewModel by activityViewModels()
     var itemOrder: Order? = null
+
+    @Inject
+    lateinit var prefRepository: PrefRepository
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -50,11 +57,11 @@ class OrderDetailsTabFragment : Fragment() {
 
 
         lifecycleScope.launch {
-            ordersViewModel.clickedOrder.collectLatest {
+            adminOrdersViewModel.clickedOrder.collectLatest {
                 itemOrder = it
                 if (it != null) {
                     binding.total.text = (it.orderTotal).mRoundOff()
-                    orderItemAdapter.submitList(it.orderItems)
+                    adminOrderItemAdapter.submitList(it.orderItems)
 
                     if (it.orderStatus == OrderStatus.COMPLETED) {
                         checkIfRated(it)
@@ -66,7 +73,7 @@ class OrderDetailsTabFragment : Fragment() {
 
 
         lifecycleScope.launch {
-            ordersViewModel.ratingProduct.collectLatest {
+            adminOrdersViewModel.ratingProduct.collectLatest {
                 when (it) {
                     is Resource.Failure -> {
                         ProgressDialogUtil.dismissProgressDialog()
@@ -79,7 +86,8 @@ class OrderDetailsTabFragment : Fragment() {
                     is Resource.Success -> {
                         ProgressDialogUtil.dismissProgressDialog()
                         productsRated()
-                        Toast.makeText(context,"Thanks for your feedback",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Thanks for your feedback", Toast.LENGTH_SHORT)
+                            .show()
 
                     }
 
@@ -92,13 +100,17 @@ class OrderDetailsTabFragment : Fragment() {
 
 
         binding.rateNow.setOnClickListener {
-            if (orderItemAdapter.isAllProductsRated()) {
+            if (adminOrderItemAdapter.isAllProductsRated()) {
                 itemOrder?.let {
-                    ordersViewModel.rateOrder(it, orderItemAdapter.ratingHashMap)
+                    adminOrdersViewModel.rateOrder(it, adminOrderItemAdapter.ratingHashMap)
                 }
             } else
                 Toast.makeText(requireContext(), "Please rate all products", Toast.LENGTH_SHORT)
                     .show()
+        }
+
+        if (prefRepository.currentUser.stringToCustomer()?.cusIsAdmin == true) {
+            binding.bottomBar.visibility = View.GONE
         }
 
 
@@ -108,10 +120,10 @@ class OrderDetailsTabFragment : Fragment() {
         binding.rateNow.visibility = View.GONE
         binding.tvButton.visibility = View.GONE
 
-        val mList = orderItemAdapter.currentList.map {
-            it.copy(rating = orderItemAdapter.ratingHashMap[it.prodId] ?: 0.0f)
+        val mList = adminOrderItemAdapter.currentList.map {
+            it.copy(rating = adminOrderItemAdapter.ratingHashMap[it.prodId] ?: 0.0f)
         }
-        orderItemAdapter.submitList(mList)
+        adminOrderItemAdapter.submitList(mList)
     }
 
     private fun checkIfRated(order: Order) {
@@ -123,8 +135,8 @@ class OrderDetailsTabFragment : Fragment() {
 
     private fun setuprecyclerview() {
         binding.cartRecyclerview.apply {
-            orderItemAdapter = OrderItemAdapter()
-            adapter = orderItemAdapter
+            adminOrderItemAdapter = OrderItemAdapter(prefRepository.currentUser.stringToCustomer()?.cusIsAdmin== true)
+            adapter = adminOrderItemAdapter
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         }
 

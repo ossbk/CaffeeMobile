@@ -9,18 +9,20 @@ data class Customer(
     var cusPhoneNo: String = "",
     var cusUserName: String = "",
     var cusPassword: String = "",
-    var cusIsActive: Boolean = true
+    var cusIsActive: Boolean = true,
+    var cusIsAdmin: Boolean = false
 ) {
     fun customerToString(): String {
         return try {
             Gson().toJson(this)
-        } catch (e:Exception){
+        } catch (e: Exception) {
             ""
         }
     }
 
 
 }
+
 
 fun String.stringToCustomer(): Customer? {
     return try {

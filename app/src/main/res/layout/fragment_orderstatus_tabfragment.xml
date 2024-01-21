@@ -188,7 +188,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
-                        android:text="Waiting for confirmaton"
+                        android:text="Waiting for Preparation"
                         android:textColor="#000111"
                         android:textSize="16sp"
                         android:textStyle="bold"
@@ -201,7 +201,7 @@
 
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Your Order will be confirmed soon"
+                        android:text="Your Order will be prepared soon"
                         app:layout_constraintEnd_toEndOf="@id/tvconfirm"
                         app:layout_constraintStart_toStartOf="@+id/tvconfirm"
                         app:layout_constraintTop_toBottomOf="@+id/tvconfirm" />
@@ -209,88 +209,6 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/s3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/s1">
-
-                    <View
-                        android:id="@+id/v3"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginLeft="30dp"
-                        android:alpha="0.5"
-                        android:background="@drawable/shape_status_current"
-                        app:layout_constraintBottom_toBottomOf="@+id/img_dispatched"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/img_dispatched" />
-
-                    <View
-                        android:id="@+id/d3"
-                        android:layout_width="3dp"
-
-                        android:layout_height="34dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="4dp"
-                        android:alpha="0.5"
-                        android:background="@drawable/shape_status_current"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/v3" />
-
-                    <ImageView
-                        android:id="@+id/img_dispatched"
-
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginLeft="20dp"
-                        android:alpha="0.7"
-                        android:src="@drawable/ic_bike"
-                        app:layout_constraintStart_toEndOf="@+id/v3"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <View
-                        android:id="@+id/supporter_shipped"
-                        android:layout_width="1dp"
-                        android:layout_height="1dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/img_dispatched"
-                        app:layout_constraintEnd_toEndOf="@+id/img_dispatched"
-                        app:layout_constraintStart_toStartOf="@+id/img_dispatched"
-                        app:layout_constraintTop_toTopOf="@+id/img_dispatched" />
-
-                    <TextView
-                        android:id="@+id/tvdispatch"
-
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:alpha="0.5"
-                        android:text="Pickup"
-                        android:textColor="#000111"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@+id/supporter_shipped"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/img_dispatched" />
-
-                    <TextView
-                        android:id="@+id/desdispatch"
-
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:alpha="0.5"
-                        android:text="Your order will be ready to pickup soon."
-                        app:layout_constraintEnd_toEndOf="@id/tvdispatch"
-                        app:layout_constraintStart_toStartOf="@+id/tvdispatch"
-                        app:layout_constraintTop_toBottomOf="@+id/tvdispatch" />
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/s4"
@@ -354,7 +272,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:alpha="0.5"
-                        android:text="Your order will be completed soon.."
+                        android:text="Your order will be prepared soon.."
                         app:layout_constraintEnd_toEndOf="@id/tvdelivered"
                         app:layout_constraintStart_toStartOf="@+id/tvdelivered"
                         app:layout_constraintTop_toBottomOf="@+id/tvdelivered" />
@@ -367,5 +285,15 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnUpdateStatus"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="18dp"
+        android:layout_marginBottom="10dp"
+        android:text="Prepairing"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

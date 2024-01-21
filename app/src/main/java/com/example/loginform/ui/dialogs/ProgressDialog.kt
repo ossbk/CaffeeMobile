@@ -13,7 +13,7 @@ object ProgressDialogUtil {
 
     private var progressDialog: Dialog? = null
     fun showProgressDialog(context: Context?) {
-        if (context==null)
+        if (context == null)
             return
         val builder =
             Dialog(context)

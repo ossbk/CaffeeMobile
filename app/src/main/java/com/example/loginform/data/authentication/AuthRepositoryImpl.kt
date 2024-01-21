@@ -6,6 +6,7 @@ import com.example.loginform.data.PrefRepository
 import com.example.loginform.data.Resource
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -74,5 +75,11 @@ class AuthRepositoryImpl @Inject constructor(
     override fun logout() {
         firebaseAuth.signOut()
         prefRepository.currentUser = ""
+        try {
+            FirebaseMessaging.getInstance().unsubscribeFromTopic(currentUser!!.cusId)
+            FirebaseMessaging.getInstance().unsubscribeFromTopic("admin")
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 }

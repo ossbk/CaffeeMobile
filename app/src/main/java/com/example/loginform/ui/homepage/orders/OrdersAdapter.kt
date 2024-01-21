@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.finalspicyfood.mui.orderdetails.formatSecondsToDate
 import com.example.loginform.Model.Order
 import com.example.loginform.Model.OrderStatus
 import com.example.loginform.Model.mRoundOff
@@ -21,6 +22,7 @@ class OrdersAdapter : ListAdapter<Order, OrdersAdapter.ItemViewHolder>(diffcallb
             binding.apply {
                 totaltv.setText("$${item.orderTotal.mRoundOff()}")
                 noofitems.text = item.orderItems.size.toString()
+                datetv2.text = item.orderDate.formatSecondsToDate()
 
                 deliveryStatus.text = item.orderStatus.status
 
@@ -28,22 +30,11 @@ class OrdersAdapter : ListAdapter<Order, OrdersAdapter.ItemViewHolder>(diffcallb
                     binding.deliveryStatus.setBackgroundTintList(
                         ContextCompat.getColorStateList(binding.root.context, R.color.placed)
                     )
-                } else if (item.orderStatus.equals(OrderStatus.CANCELLED)) {
-                    binding.deliveryStatus.setBackgroundTintList(
-                        ContextCompat.getColorStateList(binding.root.context, R.color.cancelled)
-                    )
-                } else if (item.orderStatus.equals(OrderStatus.CONFIRMED)) {
+                }  else if (item.orderStatus.equals(OrderStatus.PREPARING)) {
                     binding.deliveryStatus.setBackgroundTintList(
                         ContextCompat.getColorStateList(binding.root.context, R.color.confirmed)
                     )
-                } else if (item.orderStatus.equals(OrderStatus.READY_TO_PICKUP)) {
-                    binding.deliveryStatus.setBackgroundTintList(
-                        ContextCompat.getColorStateList(
-                            binding.root.context,
-                            R.color.ready_to_pickup
-                        )
-                    )
-                } else if (item.orderStatus.equals(OrderStatus.COMPLETED)) {
+                }   else if (item.orderStatus.equals(OrderStatus.COMPLETED)) {
                     binding.deliveryStatus.setBackgroundTintList(
                         ContextCompat.getColorStateList(binding.root.context, R.color.delivered)
                     )

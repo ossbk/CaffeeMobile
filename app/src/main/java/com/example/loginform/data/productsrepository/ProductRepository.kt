@@ -8,7 +8,10 @@ interface ProductRepository {
     suspend fun getCakeItems(): Resource<List<ProductItem>>
     suspend fun getProduct(prodId: String): ProductItem?
     fun rateProduct(key: String, value: Float)
-   suspend fun searchProducts(query:String): Resource<List<ProductItem>>
+    suspend fun searchProducts(query: String): Resource<List<ProductItem>>
+    suspend fun addProduct(productItem: ProductItem): Resource<Boolean>
+   suspend fun deleteProduct(it: ProductItem) : Resource<Boolean>
+
 
     var selectedProduct: ProductItem?
 }

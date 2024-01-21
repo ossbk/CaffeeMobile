@@ -1,6 +1,5 @@
 package com.example.loginform.ui.homepage.orders
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -62,9 +61,9 @@ class OrdersFragment : Fragment() {
             }
         }
 
-        ordersAdapter.orderClicked={
-            Intent(context,OrderdetailsActivity::class.java).apply{
-                putExtra(OrderdetailsActivity.ORDER_KEY,it.orderId)
+        ordersAdapter.orderClicked = {
+            Intent(context, OrderdetailsActivity::class.java).apply {
+                putExtra(OrderdetailsActivity.ORDER_KEY, it.orderId)
             }.also {
                 startActivity(it)
             }
