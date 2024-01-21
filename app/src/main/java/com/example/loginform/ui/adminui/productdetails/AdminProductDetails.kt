@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.example.loginform.adminui.productdetails.RatingProductAdapter
+import com.example.loginform.ui.adminui.productdetails.RatingProductAdapter
 import com.example.loginform.databinding.ActivityAdminProductDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest

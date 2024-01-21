@@ -56,7 +56,7 @@ class OrdersRepositoryImpl @Inject constructor(
                 )
             }
             val helper = FcmPushHelper.Builder()
-                .setServerKey("AAAAl1arb4k:APA91bGeTSLcdaf9VbnZVpmObgAGoPomfoAVLk2jgCbWZbiFdYBjR1wmLO625wpQp8DuSlHwQq8PQeHraX601I03zX3HhhBLf1vCvy7yU07rxhZnae5702EwbQ4fKu6T2zFzPSFaUGkJ")
+                .setServerKey("AAAAxlmVYew:APA91bGSZuF8AuOEUfWL2FvFRJei3ATxdmrq7ZyW2NIIrB6CMof0Pq5zUhJq7oueohF5K7SbBWiiKWZGsrrHS5gdO2yJmstKJr9142W5CBwSDi8lE6kTz4Nfw37NuCHleTiCkJgtlELf")
                 .setTokenOrTopic(
                     value = "admin",
                     isTopic = true
@@ -137,7 +137,7 @@ class OrdersRepositoryImpl @Inject constructor(
             order.orderStatus = OrderStatus.COMPLETED
 
         val helper = FcmPushHelper.Builder()
-            .setServerKey("AAAAl1arb4k:APA91bGeTSLcdaf9VbnZVpmObgAGoPomfoAVLk2jgCbWZbiFdYBjR1wmLO625wpQp8DuSlHwQq8PQeHraX601I03zX3HhhBLf1vCvy7yU07rxhZnae5702EwbQ4fKu6T2zFzPSFaUGkJ")
+            .setServerKey("AAAAxlmVYew:APA91bGSZuF8AuOEUfWL2FvFRJei3ATxdmrq7ZyW2NIIrB6CMof0Pq5zUhJq7oueohF5K7SbBWiiKWZGsrrHS5gdO2yJmstKJr9142W5CBwSDi8lE6kTz4Nfw37NuCHleTiCkJgtlELf")
             .setTokenOrTopic(
                 value = prefRepository.currentUser.stringToCustomer()!!.cusId,
                 isTopic = true

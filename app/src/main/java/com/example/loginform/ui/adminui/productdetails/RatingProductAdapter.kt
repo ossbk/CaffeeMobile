@@ -1,4 +1,4 @@
-package com.example.loginform.adminui.productdetails
+package com.example.loginform.ui.adminui.productdetails
 
 
 import android.view.LayoutInflater
