@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_brown">
+    android:background="#E8302625">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -92,13 +92,17 @@
             android:id="@+id/ratingBar"
             android:layout_width="wrap_content"
             android:layout_height="47dp"
-            android:theme="@style/RatingBar"
-            android:scaleX="0.8"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            android:background="@android:color/transparent"
+            android:backgroundTint="#E8302625"
+            android:backgroundTintMode="src_atop"
             android:isIndicator="true"
-            android:scaleY="0.8"
+            android:progressBackgroundTintMode="src_atop"
             app:layout_constraintBottom_toBottomOf="@+id/textViewName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textViewName" />
+            app:layout_constraintTop_toTopOf="@+id/textViewName"
+            app:layout_constraintVertical_bias="0.466" />
 
         <TextView
             android:id="@+id/textViewRatings"

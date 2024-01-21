@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_brown"
+    android:background="#E8302625"
     android:clickable="true">
 
     <Button
@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="75dp"
         android:layout_marginBottom="4dp"
-        android:backgroundTint="@color/light_brown"
+        android:backgroundTint="#C5AAAA"
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:text="Add To Cart"
@@ -157,31 +157,35 @@
 
     <TextView
         android:id="@+id/textViewDescription"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="16dp"
-        android:gravity="start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:paddingStart="16dp"
         android:paddingEnd="32dp"
-        android:text="sd"
+        android:text="@string/coffee_descr"
         android:textAlignment="viewStart"
         android:textColor="@color/light_brown"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:layout_constraintVertical_bias="0.75" />
 
     <RatingBar
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="47dp"
-        android:background="#FFEB3B"
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        android:background="@android:color/transparent"
+        android:backgroundTint="#E8302625"
+        android:backgroundTintMode="src_atop"
+        android:isIndicator="true"
+        android:progressBackgroundTintMode="src_atop"
         app:layout_constraintBottom_toBottomOf="@+id/textViewName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textViewName" />
+        app:layout_constraintTop_toTopOf="@+id/textViewName"
+        app:layout_constraintVertical_bias="0.466" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
