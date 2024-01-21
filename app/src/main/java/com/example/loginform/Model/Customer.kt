@@ -22,7 +22,6 @@ data class Customer(
 
 }
 
-
 fun String.stringToCustomer(): Customer? {
     return try {
         Gson().fromJson(this, Customer::class.java)

@@ -40,6 +40,11 @@ android {
     buildFeatures{
         viewBinding = true
     }
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -73,6 +78,12 @@ dependencies {
 
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("com.google.dagger:hilt-android-testing:2.48.1")
+    testImplementation("org.robolectric:robolectric:4.11.1")
+    kaptTest("com.google.dagger:hilt-android-compiler:2.48.1")
+    testImplementation("io.mockk:mockk:1.13.9")
 
 
 }
